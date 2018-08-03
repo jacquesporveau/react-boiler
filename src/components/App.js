@@ -1,11 +1,16 @@
 import React, { Component } from 'react';
 
 import Counter from './Counter';
+import Button from './Button';
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = { count: 0 };
+
+    this.incrementCount = this.incrementCount.bind(this);
+    this.decrementCount = this.decrementCount.bind(this);
+    this.resetCount = this.resetCount.bind(this);
   }
 
   decrementCount() {
@@ -25,12 +30,16 @@ class App extends Component {
   }
 
   render() {
+    const incrementProps = { text: '+', handleClick: this.incrementCount };
+    const decrementProps = { text: '-', handleClick: this.decrementCount };
+    const resetProps = { text: 'Reset', handleClick: this.resetCount };
+
     return (
       <div>
         <Counter { ...this.state } />
-        <button onClick={ () => this.decrementCount() }>-</button>
-        <button onClick={ () => this.resetCount() }>reset</button>
-        <button onClick={ () => this.incrementCount() }>+</button>
+        <Button { ...decrementProps } />
+        <Button { ...resetProps } />
+        <Button { ...incrementProps } />
       </div>
     );
   }
