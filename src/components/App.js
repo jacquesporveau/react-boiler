@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import Counter from './Counter';
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -25,7 +27,7 @@ class App extends Component {
   render() {
     return (
       <div>
-        <div>{this.state.count}</div>
+        <Counter { ...this.state } />
         <button onClick={ () => this.decrementCount() }>-</button>
         <button onClick={ () => this.resetCount() }>reset</button>
         <button onClick={ () => this.incrementCount() }>+</button>
